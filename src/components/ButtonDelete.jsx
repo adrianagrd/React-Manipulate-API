@@ -1,19 +1,15 @@
 import personsService from "../services/personsService";
 
-const deletePerson = async (id, name, persons, handleChangePersonsValue) => {
-    try {
+export const ButtonDelete = ({ id, name, persons, handleChangePersonsValue }) => {
+
+    const deletePerson = async (id, name, persons, handleChangePersonsValue) => {
+    
         if (window.confirm(`Delete ${name} ?`)) {
             await personsService.deletePerson(id);
             handleChangePersonsValue(persons.filter(person => person.id !== id));
             alert(`Person ${name} deleted successfully.`);
         }
-    } catch (error) {
-        console.error(`Error deleting person: ${error}`);
-    }
+    };
+    return <button onClick={() => deletePerson(id, name, persons, handleChangePersonsValue)}> Delete</button>
+    
 };
-
-export const ButtonDelete = ({ id, name, persons, handleChangePersonsValue }) => {
-    return (
-        <button onClick={() => deletePerson(id, name, persons, handleChangePersonsValue)}> Delete</button>
-    );
-}

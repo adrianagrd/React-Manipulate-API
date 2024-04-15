@@ -7,7 +7,7 @@ export const PersonForm = ({ newName, setNewName, newNumber, handleNewNumber, pe
         const existingPerson = persons.find(person => person.name === newName);
         if (!existingPerson) {
             const newPerson = {
-                id: Date.now(),
+                id: Date.now().toString(),
                 name: newName,
                 number: newNumber
             }

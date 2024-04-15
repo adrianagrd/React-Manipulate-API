@@ -46,12 +46,11 @@ const deletePerson = async (userId) => {
     try {
         const response = await fetch(`${baseUrl}/${userId}`, {
             method: 'DELETE',
-            
-        });
-        return response;
-    } catch (error) {
-        console.error(`Error: ${error}`);
-        throw error;
+        })
+        return response.json();
+    }
+    catch(error) {
+        console.error(`Error: ${error}`);    
     }
 };
 
